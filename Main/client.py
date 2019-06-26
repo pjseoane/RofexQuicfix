@@ -2,6 +2,7 @@
 import sys
 import argparse
 import quickfix
+import time
 from Main.application import Application
 
 def main(config_file):
@@ -15,10 +16,12 @@ def main(config_file):
 
         initiator.start()
         application.run()
+
         initiator.stop()
 
     except (quickfix.ConfigError, quickfix.RuntimeError) as e:
         print(e)
+
         initiator.stop()
         sys.exit()
 
